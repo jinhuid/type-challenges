@@ -36,5 +36,6 @@ type cases = [
 
 // ============= Your Code Here =============
 type MyCapitalize<S extends string> = S extends `${infer F}${infer R}`
+// Uppercase内置类型将字符串转换为大写
   ? `${Uppercase<F>}${R}`
   : Uppercase<S>
