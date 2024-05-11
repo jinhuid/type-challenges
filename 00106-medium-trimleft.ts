@@ -15,3 +15,5 @@ type cases = [
 type TrimLeft<S extends string> = S extends `${" " | "\n" | "\t"}${infer R}`
   ? TrimLeft<R>
   : S
+
+type a = `${" " | "\n" | "\t"}${"你好"}`
