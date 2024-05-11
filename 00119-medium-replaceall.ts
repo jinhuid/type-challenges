@@ -22,5 +22,5 @@ type ReplaceAll<
   ? S
   : //直接拼接一组字符串 让ts自己找到From的位置 从而推断 L R 最后拼接
   S extends `${infer L}${From}${infer R}`
-  ? `${L}${To}${ReplaceAll<`${R}`, From, To>}`
+  ? `${L}${To}${ReplaceAll<R, From, To>}`
   : S

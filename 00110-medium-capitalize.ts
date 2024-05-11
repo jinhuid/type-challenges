@@ -38,4 +38,4 @@ type cases = [
 type MyCapitalize<S extends string> = S extends `${infer F}${infer R}`
 // Uppercase内置类型将字符串转换为大写
   ? `${Uppercase<F>}${R}`
-  : Uppercase<S>
+  : "" //不满足第一个判断(目标肯定是"") 直接返回空字符串
