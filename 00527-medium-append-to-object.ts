@@ -46,7 +46,10 @@ type cases = [
 
 // ============= Your Code Here =============
 type AppendToObject<T, U extends string, V> = {
-  [K in keyof T | U]: K extends U ? V : T[K & keyof T]
+  [K in keyof T | U]: K extends U
+    ? V
+    : /**交叉两组联合类型 得到的是他们的共同类型*/ T[K & keyof T]
 }
 
 type a = AppendToObject<test1, "home", boolean>
+type b = ("a" | "b") & ("a" | "c") //交叉两组联合类型 得到的是他们的共同类型
