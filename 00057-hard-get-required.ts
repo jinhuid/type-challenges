@@ -10,14 +10,11 @@ type cases = [
 
 // ============= Your Code Here =============
 type GetRequired<T> = {
-  [P in keyof T as T[P] /**这里的T[P]如果可选类型 那么T[P]就是P|undefined 判断不成立 */ extends Required<T>[P]
+  [P in keyof T as T[P] /**如果P属性是可选类型 那么T[P]的类型为T[P]|undefined 判断不成立 */ extends Required<T>[P]
     ? P
     : never]: T[P]
 }
 
-type aa<T> = { [k in keyof T]: k }
+
 type a = GetRequired<{ foo: number; bar?: string }>
-
-type b = aa<{ a?: 123 }>
-
 type c = "a" | undefined extends "a" ? true : false
