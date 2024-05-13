@@ -1,3 +1,5 @@
+export {}
+
 type Test<T> = T extends T ? `-${T & string}` : "-"
 
 type a = Test<"A" | "B" | "C"> // -1
