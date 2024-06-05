@@ -33,15 +33,17 @@ type MergeObj<O> = {
   [P in keyof O]: O[P]
 }
 
-type PartialByKeys<T, K extends keyof T = keyof T> = MergeObj<
+// 使用omit代替mergeobj 比较巧妙
+type PartialByKeys<T, K extends keyof T = keyof T> = Omit<
   {
     [P in K]?: T[P]
   } & {
     [P in Exclude<keyof T, K>]: T[P]
-  }
+  },
+  never
 >
+
 
 type a = PartialByKeys<User, "name">
 
 type b = keyof a
-
