@@ -32,12 +32,13 @@ type IsNever<T extends unknown> = [T] extends [never] ? true : false
 
 type IsUnion<T, B = T> = IsNever<T> extends true
   ? false
-  : T extends B
+  : T extends B //联合类型的情况是分开判断 即 undefined extends B | null extends B | void extends B| "" extends B进行判断得到的结果
   ? [B] extends [T]
     ? false
     : true
   : never
 
+type ans = IsUnion<undefined | null | void | "">
 // type isUnion2<T, B = T> = T extends B
 //   ? true extends true
 //     ? 1
